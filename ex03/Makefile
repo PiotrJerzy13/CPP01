@@ -1,34 +1,24 @@
-# Compiler and flags
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = c++
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-# Source files
-SRCS = main.cpp \
-       Weapon.cpp \
-       HumanA.cpp \
-       HumanB.cpp
-
-# Object files
-OBJS = $(SRCS:.cpp=.o)
-
-# Executable name
 NAME = violence
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+OBJ_DIR = bin
+OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-# Rules
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

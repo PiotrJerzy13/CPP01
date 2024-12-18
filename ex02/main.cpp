@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 
-void printInfo(const std::string& value, const std::string* stringPTR, const std::string& stringREF) {
+void printInfo(const std::string& value, const std::string* stringPTR, const std::string& stringREF) 
+{
     std::cout << "The memory address of the string variable = " << &value << '\n';
     std::cout << "The memory address held by stringPTR = " << stringPTR << '\n';
     std::cout << "The memory address held by stringREF = " << &stringREF << '\n';
@@ -10,7 +11,8 @@ void printInfo(const std::string& value, const std::string* stringPTR, const std
     std::cout << "The value pointed to by stringREF = " << stringREF << '\n';
 }
 
-int main() {
+int main() 
+{
     std::string value = "HI THIS IS BRAIN";
     std::string* stringPTR = &value;
     std::string& stringREF = value;

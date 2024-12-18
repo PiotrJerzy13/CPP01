@@ -1,26 +1,24 @@
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = zombie
-SRC = Zombie.cpp main.cpp zombieHorde.cpp
-OBJ = $(SRC:.cpp=.o)
+NAME = ZombieHorde
+SRC = Zombie.cpp main.cpp ZombieHorde.cpp
+OBJ_DIR = bin
+OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-# Targets
-all: $(NAME) 
+all: $(NAME)
 
-# Compile program 1
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean object files and executables
 clean:
-	rm -f $(OBJ0) $(OBJ1)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME0) $(NAME1)
+	rm -f $(NAME)
 
 re: fclean all
-

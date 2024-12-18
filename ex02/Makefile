@@ -1,25 +1,24 @@
-NAME = main
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-SRCS = main.cpp
-OBJSDIR = objs/
-OBJS = $(addprefix $(OBJSDIR), $(SRCS:.cpp=.o))
 
-$(NAME):		$(OBJS)
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+NAME = main
+SRC = main.cpp
+OBJ_DIR = bin
+OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-$(OBJSDIR)%.o:	%.cpp
-				@mkdir -p $(dir $@)
-				$(CC) -c $< -o $@
+all: $(NAME)
 
-all:			$(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-				rm -rf $(OBJSDIR)
+	rm -rf $(OBJ_DIR)
 
-fclean:			clean
-				rm -f $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re:				fclean all
-
-.PHONY:			all clean fclean re
+re: fclean all

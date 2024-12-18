@@ -5,10 +5,11 @@
 #include <string>
 #include <iostream>
 
-class HumanA {
+class HumanA 
+{
 private:
     std::string name;
-    Weapon& weapon; // Reference to a weapon
+    Weapon& weapon;
 
 public:
     HumanA(const std::string& name, Weapon& weapon);

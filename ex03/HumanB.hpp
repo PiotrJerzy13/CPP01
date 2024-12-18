@@ -5,10 +5,11 @@
 #include <string>
 #include <iostream>
 
-class HumanB {
+class HumanB 
+{
 private:
     std::string name;
-    Weapon* weapon; // Pointer to a weapon (can be null)
+    Weapon* weapon;
 
 public:
     HumanB(const std::string& name);
