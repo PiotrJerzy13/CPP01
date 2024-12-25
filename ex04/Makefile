@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = Replace
+NAME = replace
 SRC = main.cpp Replace.cpp
 OBJ_DIR = bin
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)

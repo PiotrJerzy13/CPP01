@@ -1,22 +1,23 @@
 #include "Harl.hpp"
 
-int main() {
+void clearScreen() 
+{
+    std::system("clear");
+}
+
+int main(int argc, char* argv[]) 
+{
+    if (argc != 2) 
+    {
+        std::cerr << "\nUsage: ./harl <level: 'DEBUG', 'INFO', 'WARNING', 'ERROR'>\n" << std::endl;
+        return 1;
+    }
+
     Harl harl;
-
-    std::cout << "Complaining at DEBUG level:" << std::endl;
-    harl.complain("DEBUG");
-
-    std::cout << "\nComplaining at INFO level:" << std::endl;
-    harl.complain("INFO");
-
-    std::cout << "\nComplaining at WARNING level:" << std::endl;
-    harl.complain("WARNING");
-
-    std::cout << "\nComplaining at ERROR level:" << std::endl;
-    harl.complain("ERROR");
-
-    std::cout << "\nTrying an invalid level:" << std::endl;
-    harl.complain("UNKNOWN");
+	clearScreen();
+    harl.complain(argv[1]);
 
     return 0;
 }
+
+

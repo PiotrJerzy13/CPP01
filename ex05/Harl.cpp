@@ -1,34 +1,50 @@
 #include "Harl.hpp"
 
-void Harl::debug() {
-    std::cout << "DEBUG: I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
+std::string Harl::to_upper(const std::string &str)
+{
+    std::string upper_str = str;
+    for (size_t i = 0; i < upper_str.length(); i++) {
+        if (upper_str[i] >= 'a' && upper_str[i] <= 'z')
+		{
+            upper_str[i] = upper_str[i] - ('a' - 'A');
+        }
+    }
+    return upper_str;
+}
+void Harl::debug() 
+{
+    std::cout << "[DEBUG] I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n" << std::endl;
 }
 
-void Harl::info() {
-    std::cout << "INFO: I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+void Harl::info() 
+{
+    std::cout << "[INFO] I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger!\n" << std::endl;
 }
 
-void Harl::warning() {
-    std::cout << "WARNING: I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
+void Harl::warning() 
+{
+    std::cout << "[WARNING] I think I deserve to have some extra bacon for free.\n" << std::endl;
 }
 
-void Harl::error() {
-    std::cout << "ERROR: This is unacceptable! I want to speak to the manager now." << std::endl;
+void Harl::error() 
+{
+    std::cout << "[ERROR] This is unacceptable! I want to speak to the manager now.\n" << std::endl;
 }
 
-void Harl::complain(const std::string& level) {
-    // Define the mapping of levels to functions
-    typedef void (Harl::*HarlFunction)();
-    const std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    HarlFunction functions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+void Harl::complain(std::string level) 
+{
+	std::string upper_level = to_upper(level);
+    void (Harl::*functions[])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+    std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
-    // Search for the level and call the corresponding function
-    for (size_t i = 0; i < 4; ++i) {
-        if (levels[i] == level) {
-            (this->*functions[i])(); // Call the function using the pointer
+    for (int i = 0; i < 4; i++) 
+    {
+        if (levels[i] == upper_level) 
+        {
+            (this->*functions[i])();
             return;
         }
     }
 
-    std::cerr << "Invalid level: " << level << std::endl;
+    std::cout << "[UNKNOWN] Unknown complaint level!" << std::endl;
 }
