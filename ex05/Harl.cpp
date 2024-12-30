@@ -31,11 +31,11 @@ void Harl::error()
     std::cout << "[ERROR] This is unacceptable! I want to speak to the manager now.\n" << std::endl;
 }
 
-void Harl::complain(std::string level) 
+void Harl::complain(const std::string& level)
 {
 	std::string upper_level = to_upper(level);
     void (Harl::*functions[])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
-    std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+    const std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
     for (int i = 0; i < 4; i++) 
     {

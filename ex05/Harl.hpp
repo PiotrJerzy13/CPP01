@@ -12,10 +12,10 @@ private:
     void warning(void);
     void error(void);
 
-    std::string to_upper(const std::string &str);
+    static std::string to_upper(const std::string &str);
 
 public:
-    void complain(std::string level);
+    void complain(const std::string& level);
 };
 
 #endif

@@ -1,4 +1,3 @@
-
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
@@ -12,15 +11,15 @@ private:
 
 public:
     Zombie() : name("Unnamed Zombie") {}
-    Zombie(const std::string& name) : name(name) {}
+    explicit Zombie(const std::string& name) : name(name) {}
     ~Zombie();
 
     void announce() const;
-    void setName(std::string newname);
+    void setName(const std::string& newname);
 };
 
 
-Zombie*	zombieHorde( int N, std::string name );
+Zombie*	zombieHorde( int N, const std::string& name );
 
 #endif
 

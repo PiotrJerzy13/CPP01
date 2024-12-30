@@ -14,8 +14,8 @@ void printInfo(const std::string& value, const std::string* stringPTR, const std
 int main() 
 {
     std::string value = "HI THIS IS BRAIN";
-    std::string* stringPTR = &value;
-    std::string& stringREF = value;
+    const std::string* stringPTR = &value;
+    const std::string& stringREF = value;
 
     printInfo(value, stringPTR, stringREF);
 

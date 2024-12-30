@@ -12,7 +12,7 @@ private:
     Weapon* weapon;
 
 public:
-    HumanB(const std::string& name);
+	explicit HumanB(const std::string& name);
     void setWeapon(Weapon& newWeapon);
     void attack() const;
 };
