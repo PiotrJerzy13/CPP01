@@ -1,8 +1,13 @@
 #include "Harl.hpp"
 
-void clearScreen() 
+bool clearScreen()
 {
-    std::system("clear");
+    int ret = system("clear");
+    if (ret != 0) {
+        std::cerr << "Failed to clear the screen!" << std::endl;
+        return false;
+    }
+    return true;
 }
 
 int main(int argc, const char* argv[]) 
