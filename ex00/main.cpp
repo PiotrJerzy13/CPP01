@@ -2,11 +2,11 @@
 
 int main() 
 {
-    Zombie* heapZombie = newZombie("Tom");
-    heapZombie->announce();
-    delete heapZombie;
+	Zombie* heapZombie = newZombie("Tom");
+	heapZombie->announce();
+	delete heapZombie;
 
-    randomChump("Luca");
+	randomChump("Luca");
 
-    return 0;
+	return 0;
 }
